@@ -9,7 +9,8 @@ module.exports = {
         ],
         alias: {
           _navigator: "./src/navigator",
-          _pages:"./src/components/pages"
+          _pages:"./src/components/pages",
+          _assets:"./src/assets"
        }
       } 
     ] 
