@@ -1,5 +1,5 @@
 import React from 'react'
-import colors from '../../variables/colors'
+import colors from '../../styles/colors'
 
 import {Button, View, StyleSheet} from 'react-native'
 
@@ -9,7 +9,7 @@ const GeneralButton = ({text,onClick})=>{
             <Button 
             color={colors.COLOR_ACCENT}
             title={text}
-            onPress={()=>onClick}
+            onPress={onClick}
             />
         </View>
     )

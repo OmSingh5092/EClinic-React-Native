@@ -6,13 +6,30 @@ import GeneralButton from '../../atoms/button'
 //images
 import background from '../../../assets/images/Illustration.png'
 
+//Google Signin 
+import {googleSignin} from '../../../utils/authentication'
+
+//Local Storage
+import {session} from '../../../utils/async_storage'
+
 //theme
-import {PageTheme} from '../../../styles'
+import {pageTheme} from '../../../styles'
 
 const Login = ()=>{
 
+    const handleGoogleSignin = async (user)=>{
+        //Switch pages
+        console.log("Clicked")
+        try{
+            await googleSignin()
+        }catch(err){
+            console.log(err);
+        }
+        
+    }
+
     return(
-        <View style={PageTheme.lightTheme}>
+        <View style={pageTheme.lightTheme}>
             <View style={{flexDirection:"column",flex:1, justifyContent:"center"}}>
                 <View style={{}}>
                     <Text style={style.header}>
@@ -22,15 +39,11 @@ const Login = ()=>{
                 <View style={{flexDirection:"row",
                 justifyContent:"center",
                 marginTop:20}}>
-                    <GeneralButton text="Doctor"/>
-                    <GeneralButton text="Patient"/>
+                    <GeneralButton text="Doctor" onClick={()=>handleGoogleSignin('doctor')}/>
+                    <GeneralButton text="Patient" onClick={()=>handleGoogleSignin('patient')}/>
                 </View>
-
             </View>
-            
-            
             <Image source={background}/>
-
         </View>
     )
 }

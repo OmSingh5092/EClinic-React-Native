@@ -1,3 +1,4 @@
-import PageTheme from './pageTheme';
+import pageTheme from './page-theme';
+import colors from './colors'
 
-export {PageTheme}; 
+export {pageTheme,colors}; 
