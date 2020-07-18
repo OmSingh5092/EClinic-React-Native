@@ -6,23 +6,30 @@ import GeneralButton from '../../atoms/button'
 //images
 import background from '../../../assets/images/Illustration.png'
 
+//theme
+import {PageTheme} from '../../../styles'
+
 const Login = ()=>{
 
     return(
-        <View style={{flexDirection:"column", flex:1}}>
-            <Text style={style.root}>
-                Hellow world
-            </Text>
+        <View style={PageTheme.lightTheme}>
+            <View style={{flexDirection:"column",flex:1, justifyContent:"center"}}>
+                <View style={{}}>
+                    <Text style={style.header}>
+                        Who are you?
+                    </Text>
+                </View>
+                <View style={{flexDirection:"row",
+                justifyContent:"center",
+                marginTop:20}}>
+                    <GeneralButton text="Doctor"/>
+                    <GeneralButton text="Patient"/>
+                </View>
 
-            <View style={{display:"flex", flexDirection:"row", flexGrow:1}}>
-                <GeneralButton text="Doctor"/>
-                <GeneralButton text="Patient"/>
             </View>
             
-            <Image
-            source={background}>
-
-            </Image>
+            
+            <Image source={background}/>
 
         </View>
     )
@@ -31,8 +38,9 @@ const Login = ()=>{
 export default Login;
 
 const style = StyleSheet.create({
-    root:{
-        fontFamily:'Montserrat-Bold',
+    header:{
         fontSize:30,
+        fontFamily:"Montserrat-Bold",
+        textAlign:"center"
     }
 })
