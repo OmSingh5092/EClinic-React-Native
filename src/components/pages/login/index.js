@@ -6,6 +6,9 @@ import GeneralButton from '../../atoms/button'
 //Google Button
 import {GoogleSigninButton} from '@react-native-community/google-signin'
 
+//Api
+import {patientSignin,doctorSignin} from '../../../utils/apis/signinCtrl'
+
 //images
 import background from '../../../assets/images/Illustration.png'
 
@@ -20,22 +23,25 @@ import {pageTheme} from '../../../styles'
 
 const Login = ()=>{
 
-    const handleGoogleSignin = async ()=>{
-        //Switch pages
+    const handleGoogleSignin = async (user)=>{
         console.log("Clicked")
         try{
-            await googleSignin()
+            const userInfo = await googleSignin()
+            setSignin(true);
+
+            if(user =='doctor'){
+                doctorSignin(userInfo.idToken).then((res)=>(res.json()))
+                .then((res)=>{
+                    console.log(res);
+                })
+            }else{
+                patientSignin(userInfo.idToken).then((res)=>(res.json()))
+                .then((res)=>{
+                    console.log(res);
+                })
+            }
         }catch(err){
             console.log(err);
-        }
-        
-    }
-
-    const switchPage = async (user)=>{
-        if(user =='doctor'){
-
-        }else{
-            
         }
     }
 
@@ -49,9 +55,6 @@ const Login = ()=>{
                     <Text style={style.header}>
                         Let's get started!
                     </Text>
-                    <GoogleSigninButton
-                    style={{marginTop:20,}}
-                    onPress={handleGoogleSignin}/>
                 </View>
                 <View style={{marginTop:20}}>
                     <Text style={style.subTitle}>
@@ -61,8 +64,8 @@ const Login = ()=>{
                 <View style={{flexDirection:"row",
                 justifyContent:"center",
                 marginTop:20}}>
-                    <GeneralButton text="Doctor" onClick={()=>switchPage('doctor')}/>
-                    <GeneralButton text="Patient" onClick={()=>switchPage('patient')}/>
+                    <GeneralButton text="Doctor" onClick={()=>handleGoogleSignin('doctor')}/>
+                    <GeneralButton text="Patient" onClick={()=>handleGoogleSignin('patient')}/>
                 </View>
             </View>
             <Image source={background}/>

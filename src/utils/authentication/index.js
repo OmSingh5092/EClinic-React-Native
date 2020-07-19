@@ -5,8 +5,8 @@ const googleSignin = async()=>{
     try {
         await GoogleSignin.hasPlayServices();
         const userInfo = await GoogleSignin.signIn();
-
         console.log(userInfo);
+        return userInfo;
 
 
     } catch (error) {
