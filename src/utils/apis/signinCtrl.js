@@ -1,7 +1,6 @@
 import {signInEndPoint} from './endpoints'
 
 export const patientSignin = (idToken)=>{
-    console.log("Token",idToken);
     const requestOptions = {
         method:"POST",
         headers:{ 'Content-Type': 'application/json' },
@@ -12,7 +11,6 @@ export const patientSignin = (idToken)=>{
 }
 
 export const doctorSignin = (idToken)=>{
-    console.log("Token",idToken);
     const requestOptions = {
         method:"POST",
         headers:{ 'Content-Type': 'application/json' },

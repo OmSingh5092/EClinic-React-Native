@@ -21,7 +21,10 @@ import {session} from '../../../utils/async_storage'
 //theme
 import {pageTheme} from '../../../styles'
 
-const Login = ()=>{
+const Login = ({navigation})=>{
+
+    //states
+    const [signin, setSignin] = React.useState(false);
 
     const handleGoogleSignin = async (user)=>{
         console.log("Clicked")
@@ -33,11 +36,13 @@ const Login = ()=>{
                 doctorSignin(userInfo.idToken).then((res)=>(res.json()))
                 .then((res)=>{
                     console.log(res);
+                    navigation.navigate('SignupDoctor');
                 })
             }else{
                 patientSignin(userInfo.idToken).then((res)=>(res.json()))
                 .then((res)=>{
                     console.log(res);
+                    navigation.navigate('SignupPatient');
                 })
             }
         }catch(err){
@@ -45,12 +50,9 @@ const Login = ()=>{
         }
     }
 
-    //states
-    const [signin, setSignin] = React.useState(false);
-
     return(
         <View style={pageTheme.lightTheme}>
-            <View style={{flexDirection:"column",flex:1, alignContent:"center"}}>
+            <View style={{flexDirection:"column",flex:1, alignContent:"center",marginTop:30}}>
                 <View>
                     <Text style={style.header}>
                         Let's get started!
@@ -82,9 +84,9 @@ const style = StyleSheet.create({
         textAlign:"center"
     },
     subTitle:{
+        marginTop:30,
         fontSize:20,
         fontFamily:"Montserrat-Regular",
         textAlign:"center",
     }
-
 })
