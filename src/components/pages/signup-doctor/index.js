@@ -1,14 +1,28 @@
 import React from 'react'
-import { View,Text } from 'react-native';
+import { View,Text,StyleSheet} from 'react-native';
 
-const SignupDoctor = ()=>{
-    return (
-        <View>
-            <Text>
-                Signup Doctor Screen
-            </Text>
+//molecules
+import {AppBar} from '../../molecules'
+import { FormDoctor } from '../../organism';
+
+//Theme
+import {pageTheme} from '../../../styles'
+
+const SignupDoctor = ({navigation})=>{
+    return (        
+        <View style={pageTheme.lightTheme}>
+            <AppBar onNavigateUp={()=>navigation.goBack()} title="Doctor Signup"/>
+            <View style={style.formAnchor}>
+                <FormDoctor/>
+            </View>
         </View>
     )
 }
+
+const style=StyleSheet.create({
+    formAnchor:{
+        margin:20
+    }
+})
 
 export default SignupDoctor;

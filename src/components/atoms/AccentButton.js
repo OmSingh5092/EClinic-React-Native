@@ -3,7 +3,7 @@ import colors from '../../styles/colors'
 
 import {Button, View, StyleSheet} from 'react-native'
 
-const GeneralButton = ({text,onClick})=>{
+const AccentButton = ({text,onClick})=>{
     return (
         <View style={style.root}>
             <Button 
@@ -15,7 +15,7 @@ const GeneralButton = ({text,onClick})=>{
     )
 }
 
-export default GeneralButton;
+export default AccentButton;
 
 const style = StyleSheet.create({
     root:{

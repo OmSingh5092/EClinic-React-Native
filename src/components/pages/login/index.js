@@ -1,7 +1,7 @@
 import * as React from 'react'
 
 import {Text, View,StyleSheet,Image} from 'react-native'
-import GeneralButton from '../../atoms/button'
+import {AccentButton} from '../../atoms'
 
 //Google Button
 import {GoogleSigninButton} from '@react-native-community/google-signin'
@@ -66,8 +66,8 @@ const Login = ({navigation})=>{
                 <View style={{flexDirection:"row",
                 justifyContent:"center",
                 marginTop:20}}>
-                    <GeneralButton text="Doctor" onClick={()=>handleGoogleSignin('doctor')}/>
-                    <GeneralButton text="Patient" onClick={()=>handleGoogleSignin('patient')}/>
+                    <AccentButton text="Doctor" onClick={()=>handleGoogleSignin('doctor')}/>
+                    <AccentButton text="Patient" onClick={()=>handleGoogleSignin('patient')}/>
                 </View>
             </View>
             <Image source={background}/>

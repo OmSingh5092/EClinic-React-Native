@@ -12,6 +12,8 @@ target 'EClinic' do
 
   pod 'RNGoogleSignin', :path => '../node_modules/@react-native-community/google-signin'
 
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
   target 'EClinicTests' do
     inherit! :complete
     # Pods for testing
