@@ -34,8 +34,10 @@ const Login = ({navigation})=>{
 
             if(user =='doctor'){
                 doctorSignin(userInfo.idToken).then((res)=>(res.json()))
-                .then((res)=>{
+                .then(async (res)=>{
                     console.log(res);
+                    (await session()).setToken(res.authToken);
+                    (await session()).setNewUser(res.newUser.toString());
                     navigation.navigate('SignupDoctor');
                 })
             }else{

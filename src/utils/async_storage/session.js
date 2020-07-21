@@ -1,9 +1,10 @@
 import {AsyncStorage} from 'react-native'
 
-const session = (async ()=>{
+const session = async ()=>{
     var data = {
         isNewUser:false,
         isPatient:false,
+        token:"",
         email:"",
         name:""
     }
@@ -12,6 +13,7 @@ const session = (async ()=>{
     data.isPatient = await AsyncStorage.getItem('is_patient');
     data.email = await AsyncStorage.getItem('email');
     data.name = await AsyncStorage.getItem('name');
+    data.token = await AsyncStorage.getItem('token');
 
     function getNewUser(){
         return data.isNewUser
@@ -53,7 +55,15 @@ const session = (async ()=>{
         AsyncStorage.setItem('is_patient',isPatient);
     }
 
-    return {getNewUser,setNewUser}
-})();
+    function getToken(){
+        return data.token;
+    }
+    function setToken(token){
+        data.token = token;
+        AsyncStorage.setItem('token',token);
+    }
+
+    return {getNewUser,setNewUser,getToken,setToken};
+}
 
 export default session;
