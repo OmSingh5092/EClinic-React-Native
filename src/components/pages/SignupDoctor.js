@@ -1,17 +1,16 @@
 import React from 'react'
-import { View,Text,StyleSheet} from 'react-native';
+import { View,Text,StyleSheet, Image, TouchableNativeFeedback} from 'react-native';
 
 //molecules
-import {AppBar} from '../../molecules'
-import { FormDoctor } from '../../organism';
+import { FormDoctor } from '../organism';
 
 //Theme
-import {pageTheme} from '../../../styles'
+import {pageTheme} from '../../styles'
+
 
 const SignupDoctor = ({navigation})=>{
     return (        
         <View style={pageTheme.lightTheme}>
-            <AppBar onNavigateUp={()=>navigation.goBack()} title="Doctor Signup"/>
             <View style={style.formAnchor}>
                 <FormDoctor/>
             </View>
@@ -21,7 +20,8 @@ const SignupDoctor = ({navigation})=>{
 
 const style=StyleSheet.create({
     formAnchor:{
-        margin:20
+        margin:20,
+        flexGrow:1
     }
 })
 

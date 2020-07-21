@@ -1,14 +1,19 @@
 import React from 'react'
 
-import {View,StyleSheet,TextInput, Text,Button} from 'react-native'
+import {View,StyleSheet,TextInput, Text,Button,ScrollView,Picker} from 'react-native'
 
 //Styles
 import {colors} from '../../styles'
 
+//Variables
+import {doctorVariables} from '../../variables'
+
 const FormDoctor = ()=>{
+    //states
+    const[category,setCategory] = React.useState(-1);
 
     return (
-        <View style={style.root}>
+        <ScrollView style={style.root} >
             <View style={style.section}>
                 <TextInput
                     style={style.textInput}
@@ -46,6 +51,32 @@ const FormDoctor = ()=>{
                 />
             </View>
 
+            <View style={style.section}>
+                <Text style={style.sectionTitle}>
+                    Additional Details
+                </Text>
+                <View style={style.textInput}>
+                    <Picker
+                    onValueChange={(event)=>setCategory(event.target.value)}>
+                        {doctorVariables.categories.map((item,index)=>(
+                            <Picker.Item 
+                            label={item} value={index}/>
+                        ))}
+                    </Picker>
+                </View>
+                
+                <TextInput
+                    style={style.textInput}
+                    placeholder="Year of registraion"
+                    keyboardType="number-pad"
+                    maxLength={4}
+                />
+                <TextInput
+                    style={style.textInput}
+                    placeholder="State Medical Council"
+                />
+            </View>
+
             <View style={{marginTop:40}}>
                 <Button
                 color={colors.COLOR_ACCENT}
@@ -55,15 +86,23 @@ const FormDoctor = ()=>{
             </View>
             
 
-        </View>
+        </ScrollView>
     )
 }
 
 const style = StyleSheet.create({
     root:{
-        
+        flex:1
     },
     textInput:{
+        margin:10,
+        fontSize:20,
+        borderColor:"#000000",
+        borderWidth:1,
+        borderRadius:5,
+        padding:10
+    },
+    picker:{
         margin:10,
         fontSize:20,
         borderColor:"#000000",

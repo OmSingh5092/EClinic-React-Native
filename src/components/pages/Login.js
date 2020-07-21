@@ -1,25 +1,25 @@
 import * as React from 'react'
 
 import {Text, View,StyleSheet,Image} from 'react-native'
-import {AccentButton} from '../../atoms'
+import {AccentButton} from '../atoms'
 
 //Google Button
 import {GoogleSigninButton} from '@react-native-community/google-signin'
 
 //Api
-import {patientSignin,doctorSignin} from '../../../utils/apis/signinCtrl'
+import {patientSignin,doctorSignin} from '../../utils/apis/signinCtrl'
 
 //images
-import background from '../../../assets/images/Illustration.png'
+import background from '../../assets/images/Illustration.png'
 
 //Google Signin 
-import {googleSignin} from '../../../utils/authentication'
+import {googleSignin} from '../../utils/authentication'
 
 //Local Storage
-import {session} from '../../../utils/async_storage'
+import {session} from '../../utils/async_storage'
 
 //theme
-import {pageTheme} from '../../../styles'
+import {pageTheme} from '../../styles'
 
 const Login = ({navigation})=>{
 
