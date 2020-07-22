@@ -12,7 +12,7 @@ const SignupDoctor = ({navigation})=>{
     return (        
         <View style={pageTheme.lightTheme}>
             <View style={style.formAnchor}>
-                <FormDoctor/>
+                <FormDoctor onSubmit={()=>console.log("Signup Successfull")}/>
             </View>
         </View>
     )

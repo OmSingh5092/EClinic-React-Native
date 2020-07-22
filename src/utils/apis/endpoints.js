@@ -10,3 +10,9 @@ export const doctorProfileEndPoint = {
     getAllProfle:BASE_URL+"api/doctor/getall",
     updateProfile:BASE_URL+"api/doctor/update",
 }
+
+export const patientProfileEndPoint = {
+    getProfile:BASE_URL+"api/patient/get",
+    getAllProfle:BASE_URL+"api/patient/getall",
+    updateProfile:BASE_URL+"api/patient/update",
+}

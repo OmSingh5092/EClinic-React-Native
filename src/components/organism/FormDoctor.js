@@ -14,7 +14,6 @@ import {updateProfile} from '../../utils/apis/doctorProfileCtrl'
 
 
 const FormDoctor = ({data,onSubmit, onFaliure})=>{
-
     //states
     const[category,setCategory] = React.useState("");
     const[name,setName] = React.useState("");
@@ -93,10 +92,11 @@ const FormDoctor = ({data,onSubmit, onFaliure})=>{
 
             <View style={style.section}>
                 <Text style={style.sectionTitle}>
-                    Additional Details
+                    Select Specialization
                 </Text>
                 <View style={style.textInput}>
                     <Picker
+                    selectedValue={category}
                     mode="dropdown"
                     placeholder="Category"
                     onValueChange={(val)=>setCategory(val)}>
@@ -116,8 +116,6 @@ const FormDoctor = ({data,onSubmit, onFaliure})=>{
                 title="Submit"/>
 
             </View>
-            
-
         </ScrollView>
     )
 }

@@ -1,5 +1,3 @@
-export default  {
-    categories:[
-        "Heart","Dental","Eye",
-    ]
-}
+export const categories = [
+    "Heart","Dental","Eye",
+]

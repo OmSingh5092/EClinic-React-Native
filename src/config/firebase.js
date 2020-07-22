@@ -1,7 +1,7 @@
 import * as firebase from 'firebase'
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCpjf1KZW-SZu5QOOCgloLIvV0x-y8cbWI",
+    apiKey: "AIzaSyAZQkGPstYKHkMRpwVo_bliy6e2NfncPaY",
     authDomain: "eclinic-283010.firebaseapp.com",
     databaseURL: "https://eclinic-283010.firebaseio.com",
     projectId: "eclinic-283010",
