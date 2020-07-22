@@ -1,15 +1,28 @@
 import React from 'react'
-import {View,StyleSheet,TextInput, Text,Button,ScrollView} from 'react-native'
-import {Picker} from 'native-base'
+import {View,StyleSheet,TextInput, Text,Button,ScrollView, Image} from 'react-native'
+import {Picker, Row} from 'native-base'
 
-//Styles
+import RNFS from 'react-native-fs'
+
+//firebase
+import {storage} from '../../utils/firebase'
+
+//molecules
+import {ImagePicker} from '../molecules'
+
+//styles
 import {colors} from '../../styles'
 
-//Variables
+//variables
 import {patientVariables} from '../../variables'
 
-//Api
+//api
 import {updateProfile} from '../../utils/apis/patientProfileCtrl'
+
+
+//images
+import AvatarIcon from '../../assets/icons/avatar.png'
+
 
 const FormPatient = ({data,onSubmit, onFaliure})=>{
     //states
@@ -19,6 +32,8 @@ const FormPatient = ({data,onSubmit, onFaliure})=>{
     const [gender, setGender] = React.useState("");
     const [weight,setWeight] = React.useState("");
     const[photo,setPhoto]=React.useState("path");
+
+    const[image,setImage] = React.useState(AvatarIcon);
 
     //handler
     const submitHandler= ()=>{
@@ -42,8 +57,27 @@ const FormPatient = ({data,onSubmit, onFaliure})=>{
         })
     }
 
+    const imagePickHandler = (image)=>{
+        setImage(image);
+        /*storage.uploadImage(image.uri,"/profile/patient/image.jpg")
+        .then(()=>{
+            console.log("Image uploaded successfully");
+        });   */
+    }
+    const imageRejectHandler = ()=>{
+
+    }
+
     return (
         <ScrollView style={style.root} >
+            <View style={style.imageUpload}>
+                <Image style={style.profileImage} 
+                    source={image}/>
+
+                <ImagePicker style={style.imagePicker}
+                onPicked={imagePickHandler}
+                onRejected={imageRejectHandler}/>
+            </View> 
             <View style={style.section}>
                 <TextInput
                     onChangeText={(value)=>setName(value)}
@@ -139,6 +173,21 @@ const style = StyleSheet.create({
     submit:{
         marginTop:40,
         fontSize:30
+    },
+    imageUpload:{
+        flexDirection:"row",
+        alignContent:"center",
+    },
+    profileImage:{
+        height:100,
+        width:100
+    },
+    imagePicker:{
+        flex:1,
+        marginLeft:20,
+        marginRight:20,
+        marginTop:"auto",
+        marginBottom:"auto"
     }
 })
 
